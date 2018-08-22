@@ -30,17 +30,12 @@ static int x[5000];
 int main(int argc, char** argv)
 {
 	
-	// int * a = (int*)malloc(50);
-	// int * b = (int*)malloc(100);
-	// int * c = (int*)malloc(1000);
 	
-
-	// free(b);
-	// free(a);
 
 	// int * d = (int*)malloc(5);
 	int * a;
-	int byte = 1;
+	int byte = 3;
+	int big = 3;
 
 	for(int i = 0; i < 1000; i++)
 	{
@@ -54,11 +49,11 @@ int main(int argc, char** argv)
 		free(b);
 	}
 
-	for(int i = 0; i < 1000; i++)
-	{
-		a = (int*)malloc(byte);
-		free(a);
-	}
+	// for(int i = 0; i < 1000; i++)
+	// {
+	// 	a = (int*)malloc(byte);
+	// 	free(a);
+	// }
 
 	return 0;
 }

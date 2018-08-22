@@ -41,7 +41,7 @@ void addnewblock(int index, size_t size)
 		size--;
 	}
 
-	printblock();
+	//printblock();
 
 	return;
 }
@@ -136,7 +136,7 @@ void myfree(void* ptr, char* file, size_t line)
 	}
 
 
-	printblock();
+	//printblock();
 
 	return;
 }
