@@ -32,29 +32,34 @@ int main(int argc, char** argv)
 	
 	
 
-	// int * d = (int*)malloc(5);
+	int * d = (int*)malloc(5);
+
+	free(d);
+	free(d);
 	int * a;
 	int byte = 1;
 	int big = 3;
 
-	for(int i = 0; i < 1000; i++)
-	{
-		a = (int*)malloc(byte);
-		x[i] = a;
-	}
-	// printblock();
+	// for(int i = 0; i < 1000; i++)
+	// {
+	// 	a = (int*)malloc(byte);
+	// 	x[i] = a;
+	// }
+	// // printblock();
 
-	for(int i = 999; i >= 0; i--)
-	{
-		int * b = x[i];
-		free(b);
-	}
+	// for(int i = 999; i >= 0; i--)
+	// {
+	// 	int * b = x[i];
+	// 	free(b);
+	// }
 
 	// for(int i = 0; i < 1000; i++)
 	// {
 	// 	a = (int*)malloc(byte);
 	// 	free(a);
 	// }
+
+
 	// printblock();
 
 	return 0;

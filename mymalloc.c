@@ -8,7 +8,9 @@
 #include <ctype.h>
 
 static char myblock[5000];
+
 int firstCall = 1;
+
 
 struct indexnsize
 {
@@ -34,7 +36,7 @@ void addnewblock(int index, size_t size)
 	
 	
 	i++;
-	while(size -1 > 0)
+	while(size - 1 > 0)
 	{
 
 		myblock[i] = '1';
@@ -96,6 +98,7 @@ void* mymalloc(size_t size, char* file, size_t line)
 	char c = '1';
 	char p = '2';
 
+
 	if(firstCall == 1){
 		for(int i = 0; i < 5000; i++)
 		{
@@ -109,8 +112,8 @@ void* mymalloc(size_t size, char* file, size_t line)
 	struct indexnsize ins = getfreeblocks(0);
 
 	// printf("size: %zu\n", size);
-	// printf("ins.index: %d\n", ins.index);
-	// printf("ins.size: %zu\n", ins.size);
+	printf("ins.index: %d\n", ins.index);
+	printf("ins.size: %zu\n", ins.size);
 
 	if(size < ins.size)
 		addnewblock(ins.index, size);
@@ -122,13 +125,22 @@ void* mymalloc(size_t size, char* file, size_t line)
 
 void myfree(void* ptr, char* file, size_t line)
 {
+
 	
+
 	printf("Inside Free: %d\n", (int)ptr);
-	
-	// printf("Inside Free 2: %c\n", myblock[(int)ptr]);
+
+	if(myblock[(int)ptr] != '2')
+	{
+		printf("Cannot free here.\n");
+		return;
+	}
+
+
 	
 	myblock[(int)ptr] = '0';
 	ptr++;
+
 	printf("Inside Free: %d\n", (int)ptr);
 	while(myblock[(int)ptr] == '1')
 	{
