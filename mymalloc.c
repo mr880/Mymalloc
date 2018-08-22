@@ -26,6 +26,7 @@ void printblock(){
 	printf("\n");
 	return;
 }
+
 void addnewblock(int index, size_t size)
 {
 	int i = index;
@@ -41,7 +42,8 @@ void addnewblock(int index, size_t size)
 		size--;
 	}
 
-	//printblock();
+	printblock();
+	printf("------------------------------------------------\n");
 
 	return;
 }
@@ -64,8 +66,8 @@ struct indexnsize getfreeblocks(int index)
 		if(myblock[i] == '0')
 		{
 			count = 1;
-			printf("Empty Block Found\n");
-			printf("Index: [%d]\n", i);
+			// printf("Empty Block Found\n");
+			// printf("Index: [%d]\n", i);
 			ins->index = i;
 			i++;
 			while(myblock[i] != p)
@@ -76,7 +78,7 @@ struct indexnsize getfreeblocks(int index)
 					break;
 			}
 			
-			printf("Size of block: %d\n", count);
+			//printf("Size of block: %d\n", count);
 			ins->size = count;
 			break;
 		}
@@ -102,13 +104,13 @@ void* mymalloc(size_t size, char* file, size_t line)
 		firstCall = 0;
 	}
 
-				//pointer that will point to front 
+				
 	
 	struct indexnsize ins = getfreeblocks(0);
 
-	printf("size: %zu\n", size);
-	printf("ins.index: %d\n", ins.index);
-	printf("ins.size: %zu\n", ins.size);
+	// printf("size: %zu\n", size);
+	// printf("ins.index: %d\n", ins.index);
+	// printf("ins.size: %zu\n", ins.size);
 
 	if(size < ins.size)
 		addnewblock(ins.index, size);
@@ -121,12 +123,13 @@ void* mymalloc(size_t size, char* file, size_t line)
 void myfree(void* ptr, char* file, size_t line)
 {
 	
-	printf("Inside Free: %c\n", myblock[(int)ptr]);
+	printf("Inside Free: %d\n", (int)ptr);
 	
-	printf("Inside Free 2: %c\n", myblock[(int)ptr]);
+	// printf("Inside Free 2: %c\n", myblock[(int)ptr]);
 	
 	myblock[(int)ptr] = '0';
 	ptr++;
+	printf("Inside Free: %d\n", (int)ptr);
 	while(myblock[(int)ptr] == '1')
 	{
 
@@ -136,7 +139,9 @@ void myfree(void* ptr, char* file, size_t line)
 	}
 
 
-	//printblock();
+	printblock();
+	//exit(1);
+	printf("------------------------------------------------\n");
 
 	return;
 }
